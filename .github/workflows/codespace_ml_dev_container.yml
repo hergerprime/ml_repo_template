@@ -23,7 +23,7 @@ jobs:
           password: ${{secrets.DOCKER_TOKEN}}
           
       - name: Build the Docker image
-        run: docker build -t $CONTAINER_NAME:${{github.run_number}} -f docker/Dockerfile.codev .
+        run: docker build -t $CONTAINER_NAME:${{github.run_number}} -f docker/Dockerfile.codespace .
 
       - name: Push Docker Image
         run: |
