@@ -1,0 +1,34 @@
+name: Build CoDev Container
+
+on:
+  push:
+    branches:
+      - master
+  workflow_dispatch:
+
+env:
+  CONTAINER_NAME: registry.gitlab.com/currax-data-science/code_space_ml_dev_container
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Docker Login
+        uses: docker/login-action@v3.0.0
+        with:
+          registry: registry.gitlab.com
+          username: ${{DOCKER_USER}}
+          password: ${{DOCKER_TOKEN}}
+          
+      - name: Build the Docker image
+        run: docker build -t $CONTAINER_NAME:${{github.run_number}} -f docker/Dockerfile.codev .
+
+      - name: Push Docker Image
+        run: |
+          docker tag docker push $CONTAINER_NAME:${{github.run_number}} $CONTAINER_NAME:latest
+          docker push $CONTAINER_NAME:${{github.run_number}}
+          docker push $CONTAINER_NAME:latest
+
+        

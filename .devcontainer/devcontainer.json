@@ -1,0 +1,25 @@
+{
+    "dockerComposeFile": "docker-compose.yml",
+    "service": "devcontainer",
+    "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+    "forwardPorts": [8888,6006],
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "ms-toolsai.jupyter",
+                "ms-toolsai.jupyter-keymap",
+                "ms-toolsai.vscode-jupyter-cell-tags",
+                "ms-toolsai.jupyter-renderers",
+                "ms-toolsai.vscode-jupyter-slideshow",
+                "ms-python.python",
+                "ms-python.vscode-pylance",
+                "ms-python.debugpy",
+                "ms-azuretools.vscode-docker",
+                "HashiCorp.terraform",
+                "4ops.packer",
+                "redhat.ansible"
+            ]
+        }
+    }
+
+}

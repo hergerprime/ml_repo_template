@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+  devcontainer:
+    image: registry.gitlab.com/currax-data-science/generative_deep_learning_2nd_edition:5
+    tty: true
+    volumes:
+      - ../..:/workspaces:cached
+      - ../data/:/app/data
+      - ../notebooks/:/app/notebooks
+      - ../scripts/:/app/scripts
+    ports:
+        - "8888:8888"
+        - "6006:6006"
+    env_file:
+     - env
+    entrypoint: jupyter lab --ip 0.0.0.0 --port=8888 --no-browser --allow-root
+    
