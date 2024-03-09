@@ -27,7 +27,7 @@ jobs:
 
       - name: Push Docker Image
         run: |
-          docker tag docker push $CONTAINER_NAME:${{github.run_number}} $CONTAINER_NAME:latest
+          docker tag $CONTAINER_NAME:${{github.run_number}} $CONTAINER_NAME:latest
           docker push $CONTAINER_NAME:${{github.run_number}}
           docker push $CONTAINER_NAME:latest
 
